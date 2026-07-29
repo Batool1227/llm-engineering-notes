@@ -1,21 +1,75 @@
-Tokens
+# What are Tokens?
 
-What is a token?
+A **token** is the smallest unit of text that a Large Language Model (LLM) processes. A token is not always a complete word—it can be a whole word, part of a word, a punctuation mark, or even a single character, depending on the tokenizer used by the model.
 
-A token is the smallest unit of text that an LLM processes. Instead of reading text as words or sentences, the model first converts the input into a sequence of tokens.
+For example:
 
-A token can represent:
+| Text | Possible Tokens |
+|------|------------------|
+| `Hello world!` | `Hello`, `world`, `!` |
+| `unbelievable` | `un`, `believ`, `able` |
+| `GPT-4` | `GPT`, `-`, `4` |
 
-* A whole word
-* Part of a word
-* A punctuation mark
-* A number
-* A special symbol
+> **Note:** Different models use different tokenizers, so the same text may be split into different tokens.
 
-The exact tokenization depends on the tokenizer used by the model.
+---
 
-Why do LLMs use tokens?
+# Why do LLMs use Tokens?
 
-Example
+LLMs are neural networks, and neural networks operate on numerical data rather than raw text. Before text can be processed by the model, it must be converted into numbers. This is done using a tokenizer, which splits the text into smaller units called **tokens** and assigns each token a unique numerical ID. These token IDs are then transformed into embedding vectors, allowing the model to process the text during training and inference.
 
-Why tokens matter
+```text
+                Raw Text
+                    │
+                    ▼
+              ┌───────────┐
+              │ Tokenizer │
+              └───────────┘
+                    │
+                    ▼
+         Token IDs (e.g., 15496, 995)
+                    │
+                    ▼
+            Embedding Layer
+                    │
+                    ▼
+          Embedding Vectors
+                    │
+                    ▼
+                  LLM
+```
+
+---
+
+# Why do Tokens Matter?
+
+Tokens determine how text is represented before it reaches the model. Every LLM has a maximum context length, which defines the maximum number of tokens it can process in a single request. If the input exceeds this limit, the model cannot process all of the tokens, and the request may be rejected or the input may be truncated. Understanding tokens also helps engineers estimate context usage, optimize prompts, and manage inference costs when building LLM applications.
+
+```text
+                 Context Window (Example: 8K Tokens)
+
+┌────────────────────────────────────────────────────────────┐
+│                                                            │
+│  System Prompt                                             │
+│  User Prompt                                               │
+│  Chat History                                              │
+│  Retrieved Documents                                       │
+│  Current Question                                          │
+│  Generated Response                                        │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+                           ▲
+                           │
+          Maximum number of tokens the model
+            can process in a single request
+```
+
+---
+
+# Key Takeaways
+
+- LLMs cannot process raw text directly; they process numerical representations.
+- A tokenizer splits text into tokens and assigns each token a unique numerical ID.
+- Token IDs are converted into embedding vectors before entering the model.
+- Every LLM has a maximum context length measured in tokens.
+- Tokens affect context usage, inference efficiency, and API cost.
