@@ -73,3 +73,20 @@ Tokens determine how text is represented before it reaches the model. Every LLM 
 - Token IDs are converted into embedding vectors before entering the model.
 - Every LLM has a maximum context length measured in tokens.
 - Tokens affect context usage, inference efficiency, and API cost.
+
+## References
+
+1. Vaswani, A., et al. (2017). *Attention Is All You Need*. NeurIPS.
+   https://arxiv.org/abs/1706.03762
+
+2. Sennrich, R., Haddow, B., & Birch, A. (2016). *Neural Machine Translation of Rare Words with Subword Units*.
+   https://arxiv.org/abs/1508.07909
+
+3. OpenAI. *What are tokens and how to count them?*
+   https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
+
+4. Hugging Face. *Tokenizer Summary*.
+   https://huggingface.co/docs/transformers/tokenizer_summary
+
+5. Hugging Face Course. *Chapter 2: Tokenizers*.
+   https://huggingface.co/course/chapter2
